@@ -1,5 +1,6 @@
 package com.ktung.springkafka;
 
+import com.ktung.springkafka.producer.ObjectProducer;
 import com.ktung.springkafka.producer.SimpleProducer;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -13,13 +14,22 @@ public class SpringKafkaApplication {
 		SpringApplication.run(SpringKafkaApplication.class, args);
 	}
 
-	@Bean
-	public ApplicationRunner runner(SimpleProducer producer) {
-		return args -> {
-			for (int i = 0; i < 20; i++) {
-				producer.send();
-			}
-		};
-	}
+  //@Bean
+  public ApplicationRunner simpleRunner(SimpleProducer producer) {
+    return args -> {
+      for (int i = 0; i < 20; i++) {
+        producer.send();
+      }
+    };
+  }
+
+  @Bean
+  public ApplicationRunner objectRunner(ObjectProducer producer) {
+    return args -> {
+      for (int i = 0; i < 20; i++) {
+        producer.send();
+      }
+    };
+  }
 
 }

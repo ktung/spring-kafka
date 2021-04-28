@@ -1,5 +1,6 @@
 kafka:
   topic: topic
+  object-topic: object-topic
 
 spring:
   kafka:
@@ -11,3 +12,10 @@ spring:
     bootstrap-servers: server01,server02
     consumer:
       group-id: group-id
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "com.ktung.springkafka.model"
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
