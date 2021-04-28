@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.Random;
+
 @Component
 public class SimpleProducer {
 
@@ -22,7 +24,8 @@ public class SimpleProducer {
 
   public void send() {
     String msg = "Some data";
-    this.kafkaTemplate.send(topic, msg);
+    Random random = new Random();
+    this.kafkaTemplate.send(topic, String.valueOf(random.nextInt(100)), msg);
     LOG.info(String.format("Message %s sent to topic %s", msg, topic));
   }
 }
