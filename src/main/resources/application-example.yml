@@ -1,0 +1,13 @@
+kafka:
+  topic: topic
+
+spring:
+  kafka:
+    properties:
+      security.protocol: SASL_SSL
+      sasl:
+        mechanism: SCRAM-SHA-256
+        jaas.config: org.apache.kafka.common.security.scram.ScramLoginModule required username="username" password="password";
+    bootstrap-servers: server01,server02
+    consumer:
+      group-id: group-id

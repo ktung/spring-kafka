@@ -1,0 +1,2 @@
+https://www.cloudkarafka.com/docs/index.html
+https://www.cloudkarafka.com/blog/part1-kafka-for-beginners-what-is-apache-kafka.html
